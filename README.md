@@ -1,8 +1,11 @@
 # chipsoft-sql
 
 SQL voor selecties op de database van het ZIS van Chipsoft
+Dax voorbeelden voor gebruik in power BI rapportages en kubussen
 
-HIX/5.1/modeleXX
+## Folder opzet
+
+HIX/x.x/module
 Met een aparte folder voor moduleoverstijgende code.
 
 ## TODO
