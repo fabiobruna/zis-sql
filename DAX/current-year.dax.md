@@ -1,3 +1,5 @@
+
+```sql
 Aantal bezoekers CY = 
     CALCULATE (
           [Aantal bezoekers],
@@ -14,3 +16,4 @@ Aantal bezoekers CY = CALCULATE([Aantal bezoekers]; (('periode'[datum]));
        )
 
 )
+```

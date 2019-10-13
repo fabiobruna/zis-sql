@@ -1,10 +1,6 @@
-/* ==================================================================== <HEADER>
-Bestand      : lijst_van_vragen.sql
-Beschrijving :
-======================================================================== <NOTES>
 
-==================================================================== <SOURCE> */
 
+```sql
 WITH lijst_van_vragen(childid, lijstid, treelayid, volgnr, rlevel)
 AS
 (
@@ -23,3 +19,4 @@ FROM lijst_van_vragen t00
  JOIN vrlijst_vragen t10
   ON t00.childid = t10.vraagid
   ORDER BY t00.volgnr
+```  

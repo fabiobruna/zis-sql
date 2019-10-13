@@ -1,9 +1,6 @@
-/** 
- *   @Source episode-dbcs.sql
- *   @Description 
- *   @Mutaties: http://dwh.mchaaglanden.local/gitphp/?sort=age
- */
+#  @Source episode-dbcs.sql
 
+```sql
 set nocount on -- Stop de melding over aantal regels
 set ansi_warnings on -- ISO foutmeldingen(NULL in aggregraat bv)
 set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field null is)
@@ -123,3 +120,4 @@ from (
 ) t1
 
 delete from #HiXzorgproducten where not exists ( select '' from FAKTUUR_VERRICHT s00 where s00.CASENR = #HiXzorgproducten.DBCNUMMER );
+```

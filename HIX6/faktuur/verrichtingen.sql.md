@@ -1,9 +1,6 @@
-/** 
- *   @Source verrichtingen.sql
- *   @Description 
- *   @Mutaties: http://dwh.mchaaglanden.local/gitphp/?sort=age
- */
+# @Source verrichtingen.sql
 
+```sql
 set nocount on -- Stop de melding over aantal regels
 set ansi_warnings on -- ISO foutmeldingen(NULL in aggregraat bv)
 set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field null is)
@@ -306,3 +303,4 @@ select *
 from #ezisfakt
 -- where correctie = 'nee'
 order by verrichtingsdatum
+```

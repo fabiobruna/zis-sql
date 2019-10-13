@@ -1,9 +1,6 @@
-/** 
- *   @Source agenda.sql
- *   @Description 
- *   @Mutaties: http://dwh.mchaaglanden.local/gitphp/?sort=age
- */
+# @Source agenda.sql
 
+```sql
 set nocount on -- Stop de melding over aantal regels
 set ansi_warnings on -- ISO foutmeldingen(NULL in aggregraat bv)
 set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field null is)
@@ -131,3 +128,5 @@ select
    t00.[dbc_nummer]
  from #agenda t00
  order by [datumtijd afspraak]
+
+ ```
