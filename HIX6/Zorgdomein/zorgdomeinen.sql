@@ -1,3 +1,38 @@
+/** 
+ *   @Source zorgdomeinen.sql
+ *   @Description Snippet zorgdomein
+ *   @Mutaties: http://dwh.mchaaglanden.local/gitphp/?sort=age
+ */
+
+set nocount on -- Stop de melding over aantal regels
+set ansi_warnings on -- ISO foutmeldingen(NULL in aggregraat bv)
+set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field null is)
+
+/** 
+    select format ( getdate(), 'yyyy-MM-dd' ) AS FormattedDate;
+    SELECT FORMAT(getdate(), N'yyyy-MM-dd HH:mm') AS FormattedDateTime;
+    select format(xxx, 'C', 'nl-nl') as FormattedCurrency;
+    select format(xxx, 'N0', 'nl-nl') as FormattedNumber;
+
+    row_number() over(partition by xxx order by xxx) as teller,
+
+    if object_id('tempdb..#naam') is not null drop table #naam;
+
+    exec tempdb..sp_columns '#';
+
+    datediff(yy, @geboortedatum, @rekendatum) +
+    case when dateadd(yy, datediff(yy, @geboortedatum, @rekendatum),  @geboortedatum) > @rekendatum
+       then -1
+       else 0
+       end age
+
+    [nt-vm-dwh-p3].dwh_ezis.dbo.
+    [vm-dwhsql-t1].hmcbi
+    [vm-dwhsql-t1].curedwh
+    [HIXR.mchbrv.nl].[HIX_PRODUCTIE].[dbo].
+*/
+
+
 select
   t00.id, 
   cast(t00.[verwdate] as date) verwijsdatum, 
