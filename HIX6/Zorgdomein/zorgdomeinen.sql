@@ -64,6 +64,6 @@ FROM [dbo].[webagen_verwijs] t00
   left join [dbo].[webagen_agvrwcat] t30 
   on t30.id = t20.catid
 where LEFT(t00.EXTID,2) = 'ZD' 
-  and exists (select '' from #HiXzorgproducten s00 where s00.PATIENTNR = t00.PATIENTID)
-  and t30.ZOEKCODE = 'MDL'
+--  and exists (select '' from #HiXzorgproducten s00 where s00.PATIENTNR = t00.PATIENTID)
+--  and t30.ZOEKCODE = 'MDL'
 order by verwijsdatum desc
