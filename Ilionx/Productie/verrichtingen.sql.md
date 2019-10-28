@@ -27,13 +27,16 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
     [HIXR.mchbrv.nl].[HIX_PRODUCTIE].[dbo].
 */
 
+  use curedwh;
+
   select
     t00.bronkey,
     t00.PatientKey,
     t00.Verrichtingdatum,
     t10.ArtsCode,
     t10.SpecialismeCode,
-    t00.Invoercode,  
+    t00.Invoercode,    -- invoerdecpde / CBV
+	  t20.Declaratiecode, -- declaratie / CTG
     t00.ZorgactiviteitcodeKey,
     sum(t00.AantalProductie) aantal,
     sum(t00.Kostenbedrag) kostenbedrag, 
@@ -41,6 +44,10 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
   from int.Productie_Zorgactiviteiten t00
    join int.Algemeen_Arts t10
     on t00.UitvoerderKey = t10.ArtsKey
+   left join [DMT].[Productie_DimZorgactiviteitcode] t20
+    on t00.Invoercode = t20.InvoerCode
+	  and t00.Tariefafdeling = t20.Declaratieafdeling 
+	  and t00.Verrichtingdatum between t20.Begindatum and t20.Einddatum
   where year(t00.Verrichtingdatum) = 2017
    and not (substring(t00.ZorgactiviteitcodeKey,1,2) in ('14','15','16','17') and t00.Tariefafdeling <> 'WAPO' )
 --   and t00.IsCreditregel = 'Nee'
@@ -53,5 +60,6 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
     t10.ArtsCode,
     t10.SpecialismeCode,
     t00.Invoercode,
+	  t20.Declaratiecode,
     t00.ZorgactiviteitcodeKey
 ```
