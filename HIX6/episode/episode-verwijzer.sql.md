@@ -1,6 +1,31 @@
 
+```sql
+/** 
+ *   @Source episode-verwijzer.sql.md
+ *   @Description 
+ *   @Mutaties: https://vm-dwhdevops-p1.mchaaglanden.local/DefaultCollection/vault-snippets
+ */
 
-``` sql
+set nocount on -- Stop de melding over aantal regels
+set ansi_warnings on -- ISO foutmeldingen(NULL in aggregraat bv)
+set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field null is)
+
+/** 
+    select format ( getdate(), 'yyyy-MM-dd' ) AS FormattedDate;
+    SELECT FORMAT(getdate(), N'yyyy-MM-dd HH:mm') AS FormattedDateTime;
+    select format(xxx, 'C', 'nl-nl') as FormattedCurrency;
+    select format(xxx, 'N0', 'nl-nl') as FormattedNumber;
+
+    row_number() over(partition by xxx order by xxx) as teller,
+
+    if object_id('tempdb..#naam') is not null drop table #naam;
+
+    [nt-vm-dwh-p3].dwh_ezis.dbo.
+    [vm-dwhsql-t1].hmcbi
+    [vm-dwhsql-t1].curedwh
+    [HIXR.mchbrv.nl].[HIX_PRODUCTIE].[dbo].
+*/
+
 select 
 	typeverw,
 	case typeverw
