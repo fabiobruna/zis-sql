@@ -31,7 +31,7 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
 
   select
     t00.bronkey,
-    t00.PatientKey,
+    t00.Preferentnummer patientnr,
     t00.Verrichtingdatum,
     t10.ArtsCode,
     t10.SpecialismeCode,
@@ -42,12 +42,12 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
     sum(t00.Kostenbedrag) kostenbedrag, 
     sum(t00.Honorariumbedrag) Honorariumbedrag
   from int.Productie_Zorgactiviteiten t00
-   join int.Algemeen_Arts t10
-    on t00.UitvoerderKey = t10.ArtsKey
-   left join [DMT].[Productie_DimZorgactiviteitcode] t20
-    on t00.Invoercode = t20.InvoerCode
-	  and t00.Tariefafdeling = t20.Declaratieafdeling 
-	  and t00.Verrichtingdatum between t20.Begindatum and t20.Einddatum
+    join int.Algemeen_Arts t10
+      on t00.UitvoerderKey = t10.ArtsKey
+    left join int.[Productie_DimZorgactiviteitcode] t20
+	    on t00.ZorgactiviteitcodeKey = t20.ZorgactiviteitcodeKey 
+    join int.Algemeen_Patient t30
+      on t00.PatientKey = t30.PatientKey
   where year(t00.Verrichtingdatum) = 2017
    and not (substring(t00.ZorgactiviteitcodeKey,1,2) in ('14','15','16','17') and t00.Tariefafdeling <> 'WAPO' )
 --   and t00.IsCreditregel = 'Nee'
