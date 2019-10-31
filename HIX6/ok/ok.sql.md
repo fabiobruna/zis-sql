@@ -15,7 +15,7 @@ from (
       cast(t00.operatie_d as date) as operatiedatum,
       cast(t00.aanvraag_d as date) aanvraagdatum,
       t00.typeverric as [soort opname],
-      t60.VER_CODE hoofdverrichting,
+      t60.VER_CODE hoofdverrichting, -- Eerste verrichting?
       t00.okkamer,
       t10.omschr,
       t00.gp_okkamer,
