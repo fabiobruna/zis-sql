@@ -1,4 +1,4 @@
-# @Source bepaald_hoofdummer.sql
+# @Source bepaald_hoofdnummer.sql
 
 ```sql
 set nocount on -- Stop de melding over aantal regels
