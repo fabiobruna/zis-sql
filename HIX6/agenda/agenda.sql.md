@@ -1,31 +1,10 @@
 # @Source agenda.sql
 
 ```sql
-set nocount on -- Stop de melding over aantal regels
-set ansi_warnings on -- ISO foutmeldingen(NULL in aggregraat bv)
-set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field null is)
-
 /** 
-    select format ( getdate(), 'yyyy-MM-dd' ) AS FormattedDate;
-    SELECT FORMAT(getdate(), N'yyyy-MM-dd HH:mm') AS FormattedDateTime;
-    select format(xxx, 'C', 'nl-nl') as FormattedCurrency;
-    select format(xxx, 'N0', 'nl-nl') as FormattedNumber;
-
-    row_number() over(partition by xxx order by xxx) as teller,
-
-    if object_id('tempdb..#naam') is not null drop table #naam;
-
-    exec tempdb..sp_columns '#';
-
-    datediff(yy, @geboortedatum, @rekendatum) +
-    case when dateadd(yy, datediff(yy, @geboortedatum, @rekendatum),  @geboortedatum) > @rekendatum
-       then -1
-       else 0
-       end age
-
-    [nt-vm-dwh-p3].dwh_ezis.dbo.
-    [HIXR.mchbrv.nl].[HIX_PRODUCTIE].[dbo].
-*/
+ *   @Source test.sql
+ *   @Description 
+ */
 
 declare @start date;
 declare @eind date;
@@ -56,7 +35,7 @@ with cte_specialist as (
 select
    t00.afspraaknr afspraaknummer,
    t00.patientnr patientnummer,
-   t00.datum+t00.tijd [datumtijd afspraak],
+   format(t00.datum+t00.tijd, 'yyyy-MM-dd HH:mm') [datumtijd afspraak],
    t00.agenda [agenda code],
    t30.omschr [agenda oms],
    t00.subagenda [subagenda code],
@@ -105,28 +84,8 @@ where t00.AGENDA in ('..', '..')
    and t00.datum between @start and @eind
    and t00.voldaan <> 'N' -- alleen doorgegaan
 
-
 select
-   t00.[afspraaknummer],
-   t00.[patientnummer],
-   format(t00.[datumtijd afspraak], 'yyyy-MM-dd HH:mm') [datumtijd afspraak],
-   t00.[agenda code],
-   t00.[agenda oms],
-   t00.[subagenda code],
-   t00.[subagenda naam],
-   t00.[subagenda oms],
-   t00.[type afspraak code],
-   t00.[type afspraak oms],
-   t00.[consulttype],
-   t00.[constype oms],
-   t00.[uitvoerder_code],
-   t00.[specialist_naam_uitv],
-   t00.[specialisme_code_uitvoerder],
-   t00.[aanvrager_code],
-   t00.[specialist_naam_aanv],
-   t00.[specialisme_code_aanvrager],
-   t00.[dbc_nummer]
+   *
  from #agenda t00
  order by [datumtijd afspraak]
-
  ```

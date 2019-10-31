@@ -3,6 +3,12 @@
 Let op: deze selectie bevat de hoofdverrichting, en verder alleen informatie over de totale OK
 
 ```sql
+
+/** 
+ *   @Source ok.sql
+ *   @Description 
+ */
+
 if object_id('tempdb..#operaties') is not null drop table #operaties;
 select * into #operaties
 from (
