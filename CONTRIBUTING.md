@@ -1,5 +1,7 @@
-Wat algemene richtlijnen
+Dit zijn snippets voor algemeen gebruik.
 
- * SQL standaard?
- * Header
- * ??
+<blockquote>Nog te doen</blockquote>
+
+ * SQL standaard vastleggen?
+ * Standaard header velden?
+ * Hoe om te gaan met wijzigingen? Pull requests?
