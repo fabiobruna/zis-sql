@@ -41,6 +41,8 @@ from (
       on t30.GPKODE = t40.GPKODE
 ) t1
 
+-- Let op, er blijven een paar zi nummers over die dubbel voorkomen.
+
 update t00
 set t00.zinummer = '-'
 from #artikelen t00
