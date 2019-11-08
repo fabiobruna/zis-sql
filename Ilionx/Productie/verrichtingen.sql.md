@@ -22,7 +22,7 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
 
   select
     t00.bronkey,
-    t00.Preferentnummer patientnr,
+    t20.Preferentnummer patientnr,
     t00.Verrichtingdatum,
     t10.ArtsCode,
     t10.SpecialismeCode,
@@ -48,7 +48,7 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
 --   and t00.IsAddon = 'Nee'
   group by 
     t00.bronkey,
-    t00.PatientKey,
+    t20.Preferentnummer,
     t00.Verrichtingdatum,
     t10.ArtsCode,
     t10.SpecialismeCode,
