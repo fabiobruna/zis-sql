@@ -1,12 +1,12 @@
 # @Source episode-verwijzer.sql
 
 ```sql
-/** 
+/**
  *   @Source episode-verwijzer.sql
  *   @Description 
  */
 
-select 
+select distinct
     typeverw,
     case typeverw
         when '01' then  'Zelfverwijzer SEH (een patient die zich meldt bij de SEH zonder verwijzing.'
@@ -20,4 +20,5 @@ select
         when '09' then  'Patient welke gebruik maakt van directe toegang tot paramedisch hulp (bijvoorbeeld directe toegang tot fysiotherapie).'
         else null end [type verwijzer]
 from episode_epiverw
+where isnull(TYPEVERW, '') <> '';
 ```
