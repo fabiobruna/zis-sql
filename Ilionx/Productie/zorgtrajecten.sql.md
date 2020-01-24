@@ -29,10 +29,10 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
     sum(t00.Kostprijs) Kostprijs,
     sum(t00.Facturatiebedrag) Facturatiebedrag, 
     sum(t00.Aantal) Aantal
-  from dmt.Productie_FactZorgtrajecten t00
-    join dmt.Algemeen_DimArts t10
+  from DMTm.Productie_FactZorgtrajecten t00
+    join DMTm.Algemeen_DimArts t10
       on t00.UitvoerderKey = t10.ArtsKey
-    join dmt.Algemeen_DimPatient t20
+    join DMTm.Algemeen_DimPatient t20
        on t00.PatientKey = t20.PatientKey
     where year(t00.DBCBegindatum) = 2018
    and t00.IsLeegTraject = 'Nee'
