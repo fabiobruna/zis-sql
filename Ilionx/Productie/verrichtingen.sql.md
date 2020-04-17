@@ -23,14 +23,14 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
   select
     t00.bronkey,
     t20.Preferentnummer patientnr,
+    t00.DBCNummer,
     t00.Verrichtingdatum,
     t10.ArtsCode,
     t10.SpecialismeCode,
     t00.Invoercode,  
     t30.InvoerCodeOmschrijving,
     t30.Declaratiecode,
-    t30.DeclaratieCodeOmschrijving,
-    t00.ZorgactiviteitcodeKey,
+    t30.DeclaratieCodeOmschrijving
     sum(t00.AantalProductie) aantal,
     sum(t00.Kostenbedrag) kostenbedrag, 
     sum(t00.Honorariumbedrag) Honorariumbedrag
@@ -48,6 +48,7 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
 --   and t00.IsAddon = 'Nee'
   group by 
     t00.bronkey,
+    t00.DBCNummer,
     t20.Preferentnummer,
     t00.Verrichtingdatum,
     t10.ArtsCode,
@@ -55,6 +56,5 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
     t00.Invoercode,  
     t30.InvoerCodeOmschrijving,
     t30.Declaratiecode,
-    t30.DeclaratieCodeOmschrijving,
-    t00.ZorgactiviteitcodeKey
+    t30.DeclaratieCodeOmschrijving
 ```
