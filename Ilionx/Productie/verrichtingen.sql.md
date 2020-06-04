@@ -30,7 +30,7 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
     t00.Invoercode,  
     t30.InvoerCodeOmschrijving,
     t30.Declaratiecode,
-    t30.DeclaratieCodeOmschrijving
+    t30.DeclaratieCodeOmschrijving,
     sum(t00.AantalProductie) aantal,
     sum(t00.Kostenbedrag) kostenbedrag, 
     sum(t00.Honorariumbedrag) Honorariumbedrag
