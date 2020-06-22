@@ -18,9 +18,11 @@ set ansi_nulls on
   use curedwh;
 
 select top 100 
-  t00.id, 
+  t00.ID, 
+  t00.EXTID,
+  cast(t00.[REGDATE] as date) regdatum, 
   cast(t00.[verwdate] as date) verwijsdatum, 
-  charindex('Code:', t00.verwtext),
+  --charindex('Code:', t00.verwtext) code,
   substring(t00.verwtext, 10, charindex('Code:', t00.verwtext)-10) locatie,
   substring(t00.verwtext, charindex('Code:', t00.verwtext)+6, cast(charindex('Product:', t00.verwtext) as int) - cast(charindex('Code:', t00.verwtext)+6 as int)) Code,
   case when charindex('Productcode:', t00.verwtext) = 0 
@@ -34,13 +36,15 @@ select top 100
 	   else substring(t00.verwtext, charindex('Type:', t00.verwtext)+6, cast(charindex('Toegangstijd:', t00.verwtext) as int) - cast(charindex('Type:', t00.verwtext)+6 as int)) end Type,
   case when charindex('Toegangstijd:', t00.verwtext) = 0 
 	   then null 
-	   else substring(t00.verwtext, charindex('Toegangstijd:', t00.verwtext)+13, len(t00.verwtext) - cast(charindex('Toegangstijd:', t00.verwtext)+13 as int)) end Type,
+	   else substring(t00.verwtext, charindex('Toegangstijd:', t00.verwtext)+13, len(t00.verwtext) - cast(charindex('Toegangstijd:', t00.verwtext)+13 as int)) end Toegangstijd,
   t30.zoekcode, 
 --  t00.verwtext, 
   cast('' as varchar(255)) afgeleidtype, 
   t00.statusid, 
   t00.patientid
 FROM hism.vhix_WEBAGEN_VERWIJS t00
+LEFT JOIN hism.vhix_WEBAGEN_VRWKOPP t05 
+ on t00.ID = t05.VRWID
 LEFT JOIN hism.vhix_WEBAGEN_AGVRWVRG t10
  on t10.ID = t00.VERWVRG
 LEFT JOIN hism.vhix_WEBAGEN_AGVRWTYP t20
