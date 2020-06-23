@@ -25,7 +25,8 @@ select top 100
   --charindex('Code:', t00.verwtext) code,
   substring(t00.verwtext, 10, charindex('Code:', t00.verwtext)-10) locatie,
   substring(t00.verwtext, charindex('Code:', t00.verwtext)+6, cast(charindex('Product:', t00.verwtext) as int) - cast(charindex('Code:', t00.verwtext)+6 as int)) Code,
-  case when charindex('Productcode:', t00.verwtext) = 0 
+-- Werkt nog niet goed.
+/*  case when charindex('Productcode:', t00.verwtext) = 0 
 	   then null 
 	   else substring(t00.verwtext, charindex('Productcode:', t00.verwtext)+13, cast(charindex('Reden:', t00.verwtext) as int) - cast(charindex('Productcode:', t00.verwtext)+13 as int)) end Productcode,
   case when charindex('Reden:', t00.verwtext) = 0 
@@ -36,12 +37,12 @@ select top 100
 	   else substring(t00.verwtext, charindex('Type:', t00.verwtext)+6, cast(charindex('Toegangstijd:', t00.verwtext) as int) - cast(charindex('Type:', t00.verwtext)+6 as int)) end Type,
   case when charindex('Toegangstijd:', t00.verwtext) = 0 
 	   then null 
-	   else substring(t00.verwtext, charindex('Toegangstijd:', t00.verwtext)+13, len(t00.verwtext) - cast(charindex('Toegangstijd:', t00.verwtext)+13 as int)) end Toegangstijd,
+	   else substring(t00.verwtext, charindex('Toegangstijd:', t00.verwtext)+13, len(t00.verwtext) - cast(charindex('Toegangstijd:', t00.verwtext)+13 as int)) end Toegangstijd,*/
   t30.zoekcode, 
---  t00.verwtext, 
   cast('' as varchar(255)) afgeleidtype, 
   t00.statusid, 
-  t00.patientid
+  t00.patientid,
+  t40.AFSPRAAKNR  
 FROM hism.vhix_WEBAGEN_VERWIJS t00
 LEFT JOIN hism.vhix_WEBAGEN_VRWKOPP t05 
  on t00.ID = t05.VRWID
@@ -51,6 +52,8 @@ LEFT JOIN hism.vhix_WEBAGEN_AGVRWTYP t20
  on t20.ID = t10.TYPID
 LEFT JOIN hism.vhix_WEBAGEN_AGVRWCAT t30
  on t30.ID = t20.CATID
+ left join his.vHIX_AGENDA_AFSPRAAK t40
+ on t05.ObjectID = t40.AFSPRAAKNR
 where 1=1
  and isnull(t00.EXTID, '') <> ''
  and t00.[VERWDATE] BETWEEN '20190101' and '20190301'
