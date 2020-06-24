@@ -23,6 +23,7 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
 
   select top 100
     t20.Preferentnummer patientnr,
+    t00.DBCNummer,
     t00.DBCBegindatum,
     t00.DBCEinddatum,
     t70.ZorgtypeCodeLandelijk,
@@ -55,6 +56,7 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
 --   and t00.IsAddon = 'Nee'
   group by 
     t20.Preferentnummer patientnr,
+    t00.DBCNummer,
     t00.DBCBegindatum,
     t00.DBCEinddatum,
     t70.ZorgtypeCodeLandelijk,
