@@ -21,8 +21,6 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
   use curedwh;
 
 
-  use curedwh;
-
   select top 100
     t20.Preferentnummer patientnr,
     t00.DBCBegindatum,
@@ -34,6 +32,8 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
 	  t10.ArtsNaam,
     t10.SpecialismeCode,
 	  t10.SpecialismeOmschrijving,
+	  t80.DiagnoseCode,
+	  t80.DiagnoseOmschrijving
 	  t30.Declaratiecode,
     sum(t00.Kostprijs) Kostprijs,
     sum(t00.Facturatiebedrag) Facturatiebedrag, 
@@ -54,7 +54,7 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
    and t00.IsDBCVervallen = 'Nee'
 --   and t00.IsAddon = 'Nee'
   group by 
-    t20.Preferentnummer,
+    t20.Preferentnummer patientnr,
     t00.DBCBegindatum,
     t00.DBCEinddatum,
     t70.ZorgtypeCodeLandelijk,
@@ -64,5 +64,7 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
 	  t10.ArtsNaam,
     t10.SpecialismeCode,
 	  t10.SpecialismeOmschrijving,
+	  t80.DiagnoseCode,
+	  t80.DiagnoseOmschrijving
 	  t30.Declaratiecode
 ```
