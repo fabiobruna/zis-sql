@@ -21,16 +21,18 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
   use curedwh;
 
 	select
-		t00.PatientKey patientnr,
+		t40.Preferentnummer patientnr,
 		t20.OpnametypeOmschrijving,
 		t00.Opnamenummer,
 		t00.Opnamedatum,
 		t30.AfdelingCode,
 		t30.AfdelingOmschrijving
-	from CureDWH.dmtm.Opnames_FactOpnames t00
-	 join CureDWH.dmtm.Opnames_DimOpnametype t20
+	from DMTm.Opnames_FactOpnames t00
+	 join DMTm.Opnames_DimOpnametype t20
 	  on t00.OpnametypeKey = t20.OpnametypeKey
-	 join CureDWH.dmtm.Opnames_DimAfdeling t30
+	 join DMTm.Opnames_DimAfdeling t30
 	  on t00.OpnameAfdelingKey = t30.AfdelingKey
-where 1=1
+	 join DMTm.Algemeen_DimPatient t40
+	  on t00.PatientKey = t40.PatientKey
+	where 1=1
 ```
