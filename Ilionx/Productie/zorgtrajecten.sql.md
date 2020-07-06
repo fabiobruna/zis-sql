@@ -34,7 +34,7 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
     t10.SpecialismeCode,
 	  t10.SpecialismeOmschrijving,
 	  t80.DiagnoseCode,
-	  t80.DiagnoseOmschrijving
+	  t80.DiagnoseOmschrijving,
 	  t30.Declaratiecode,
     sum(t00.Kostprijs) Kostprijs,
     sum(t00.Facturatiebedrag) Facturatiebedrag, 
@@ -67,6 +67,6 @@ set ansi_nulls on -- ISO NULLL gedrag(field = null returns null, ook als field n
     t10.SpecialismeCode,
 	  t10.SpecialismeOmschrijving,
 	  t80.DiagnoseCode,
-	  t80.DiagnoseOmschrijving
+	  t80.DiagnoseOmschrijving,
 	  t30.Declaratiecode
 ```
